@@ -1,0 +1,8 @@
+.content-tab.library .buttons {
+  display: none;
+}
+th.indice {
+  vertical-align: middle;
+  position:relative;
+  min-width: 40px;
+}

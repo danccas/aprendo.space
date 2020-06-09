@@ -1,15 +1,4 @@
 <?php
-if (!function_exists('getallheaders')) {
-    function getallheaders() {
-    $headers = [];
-    foreach ($_SERVER as $name => $value) {
-        if (substr($name, 0, 5) == 'HTTP_') {
-            $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
-        }
-    }
-    return $headers;
-    }
-}
 function toHashtag($txt) {
   return trim(str_replace('#','', str_replace(' ', '', ucwords(strtolower($txt)))));
 }
@@ -614,7 +603,7 @@ function tiempo_transcurrido($fecha = 'now') {
   } elseif($diferencia <= $HORA - 5 * $MINUTO) {
     $txt = round($diferencia/$MINUTO) . ' minutos';
   } elseif($diferencia <= $HORA + 5 * $MINUTO) {
-    $txt = 'Una hora';
+    $txt = 'una hora';
   } elseif($diferencia <= $HORA * 4) {
     $txt = round($diferencia/$HORA) . ' horas';
   } elseif($diferencia <= $HORA * 12) {
@@ -624,12 +613,12 @@ function tiempo_transcurrido($fecha = 'now') {
     $prefijo = '';
     $sufijo  = ', ' . date('h:i a', $fecha);
     $txt     = $signo ? 'Mañana' : 'Ayer';
-  } elseif($diferencia <= $DIA * 6) {
+  } elseif($diferencia <= $DIA * 4) {
     $txt     = round($diferencia/$DIA) . ' días';
-#  } elseif($diferencia <= $DIA * 6) {
-#    $prefijo = $signo ? 'Este ' : '';
-#    $sufijo  = $signo ? ''      : ' pasado';
-#    $txt     = $DIAS[date('w', $fecha)];
+  } elseif($diferencia <= $DIA * 6) {
+    $prefijo = $signo ? 'Este ' : '';
+    $sufijo  = $signo ? ''      : ' pasado';
+    $txt     = $DIAS[date('w', $fecha)];
   } elseif($diferencia <= $DIA * 8) {
     $txt     = 'una semana';
   } elseif($diferencia <= $MES - 5 * $DIA) {

