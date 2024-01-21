@@ -136,7 +136,7 @@ final class Doris {
     }
   }
   private function parseHosts($hostString) {
-    preg_match_all('/(?P<host>[\w-._]+)(?::(?P<port>\d+))?/mi', $hostString, $matches);
+    preg_match_all('/(?P<host>[\w\-\.\_]+)(?::(?P<port>\d+))?/mi', $hostString, $matches);
     $hosts = null;
     foreach ($matches['host'] as $index => $match) {
       $port = !empty($matches['port'][$index]) ? (int) $matches['port'][$index] : null;
@@ -271,13 +271,20 @@ final class Doris {
         if($n['equal']) {
           $fieldlist[] = $n['field'];
           $valuelist[] = $n['value'];
+	  if($n['duple']) {
+            $duplelist[] = $n['field'] . ' = ' . $n['value'];
+          }
         } else {
           $fieldlist[] = $n['field'];
           $valuelist[] = ':' . $n['id'];
           $datalist[$n['id']] = $n['value'];
+	  if($n['duple']) {
+            $duplelist[] = $n['field'] . ' = ' . $n['value'];
+          }
         }
       }
       $fieldlist = '(' . implode(', ', $fieldlist) . ') VALUES (' . implode(', ', $valuelist) . ')';
+      $duplelist = implode(', ', $duplelist);
     }
   }
   function cmd($command, $first = false) {
@@ -329,7 +336,7 @@ final class Doris {
       return false;
     }
     static::process_data('set', $where, $wherelist, $datalistw);
-    $sql .= 'WHERE ' . $wherelist;
+    $sql .= ' WHERE ' . $wherelist;
     $this->exec($sql, $datalistw);
     return true;
   }
@@ -407,7 +414,7 @@ final class Doris {
       return false;
     }
     if ($this->type == 'pdo') {
-      if (count($result) == 0) {
+      if (empty($result)) {
         return false;
 
       } else {

@@ -20,7 +20,7 @@ $form->addField('clave', 'input:password')->setIcon('lock')->setMin(5)->setMax(2
 if($form->byRequest()) {
   if($form->isValid($error)) {
     $data = $form->getData();
-    $existe = $db->get("SELECT * FROM usuario WHERE usuario = :usuario", true, null, array(
+    $existe = $db->get("SELECT * FROM usuario WHERE usuario = :usuario", true, array(
       'usuario' => $data['usuario'],
     ));
     if(empty($existe)) {

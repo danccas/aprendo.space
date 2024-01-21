@@ -16,5 +16,5 @@ Route::config(function($app) {
   $app->attr('dir_image_public', '/img/storage/');
   $app->attr('dir_image_private', $app->attr('root') . 'public/img/storage/');
  
-  Doris::registerDSN('aprendo', 'mysql://root@localhost:3306/yoaprendo');
+  Doris::registerDSN('aprendo', 'mysql://desarrollo@localhost:3306/yoaprendo');
 });

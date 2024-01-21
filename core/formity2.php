@@ -544,7 +544,7 @@ class Formity {
     $rp .= '</div></div></div>';
     $VISTA_HTML = $rp;
     unset($rp);
-    require_once(VIEWS . 'internal.php');
+    require_once(Route::g()->attr('views') . 'internal.php');
     exit;
   }
 }

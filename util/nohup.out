@@ -1,0 +1,495 @@
+Thu Oct 01 2020 14:47:47 GMT-0500 (Peru Standard Time) Server is listening on port 8081
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '25',
+     tipo: 'dx',
+     id: '165f76326a00bd2',
+     socketId: '16' },
+  data:
+   { info:
+      { fecha_desde: 1601581649,
+        fecha_hasta: 1601581653,
+        streaming: false,
+        video: false } } }
+Conexión destino no registrada
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26',
+     tipo: 'dx',
+     id: '165f76329a4b6fd',
+     socketId: '16' },
+  data:
+   { info:
+      { fecha_desde: false,
+        fecha_hasta: false,
+        streaming: false,
+        video: false } } }
+Conexión destino no registrada
+Thu Oct 01 2020 14:48:43 GMT-0500 (Peru Standard Time) Connection from origin https://aprendo.space.
+Thu Oct 01 2020 14:48:43 GMT-0500 (Peru Standard Time) Connection accepted.
+RECEIVE DATA: {"tipo":"dx","id":16,"room_id":26}
+Thu Oct 01 2020 14:48:55 GMT-0500 (Peru Standard Time) Connection from origin https://aprendo.space.
+Thu Oct 01 2020 14:48:55 GMT-0500 (Peru Standard Time) Connection accepted.
+RECEIVE DATA: {"tipo":"ax","id":1,"room_id":26,"nick":"diego"}
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26',
+     tipo: 'dx',
+     id: '165f763e1a5ae89',
+     socketId: '16' },
+  data:
+   { info:
+      { fecha_desde: false,
+        fecha_hasta: false,
+        streaming: false,
+        video: false } } }
+Thu Oct 01 2020 15:37:46 GMT-0500 (Peru Standard Time) Peer undefined disconnected.
+Thu Oct 01 2020 15:37:47 GMT-0500 (Peru Standard Time) Connection from origin https://aprendo.space.
+Thu Oct 01 2020 15:37:47 GMT-0500 (Peru Standard Time) Connection accepted.
+RECEIVE DATA: {"tipo":"dx","id":16,"room_id":26}
+Thu Oct 01 2020 15:38:18 GMT-0500 (Peru Standard Time) Peer undefined disconnected.
+Thu Oct 01 2020 15:38:19 GMT-0500 (Peru Standard Time) Connection from origin https://aprendo.space.
+Thu Oct 01 2020 15:38:19 GMT-0500 (Peru Standard Time) Connection accepted.
+RECEIVE DATA: {"tipo":"ax","id":1,"room_id":26,"nick":"diego"}
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26',
+     tipo: 'dx',
+     id: '165f763e3edb5ac',
+     socketId: '16' },
+  data: { action: 'iniciar' } }
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26',
+     tipo: 'dx',
+     id: '165f763e421a9e2',
+     socketId: '16' },
+  data: { screen: { id: '13' } } }
+Enviar Pantalla a todos
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26',
+     tipo: 'dx',
+     id: '165f763e7bafefc',
+     socketId: '16' },
+  data:
+   { info:
+      { fecha_desde: 1601584702,
+        fecha_hasta: false,
+        streaming: true,
+        video: false } } }
+Thu Oct 01 2020 15:39:27 GMT-0500 (Peru Standard Time) Peer undefined disconnected.
+Thu Oct 01 2020 15:39:27 GMT-0500 (Peru Standard Time) Connection from origin https://aprendo.space.
+Thu Oct 01 2020 15:39:27 GMT-0500 (Peru Standard Time) Connection accepted.
+RECEIVE DATA: {"tipo":"dx","id":16,"room_id":26}
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26',
+     tipo: 'dx',
+     id: '165f763ea68c4b9',
+     socketId: '16' },
+  data:
+   { info:
+      { fecha_desde: 1601584702,
+        fecha_hasta: false,
+        streaming: true,
+        video: false } } }
+Thu Oct 01 2020 15:40:06 GMT-0500 (Peru Standard Time) Peer undefined disconnected.
+Thu Oct 01 2020 15:40:07 GMT-0500 (Peru Standard Time) Connection from origin https://aprendo.space.
+Thu Oct 01 2020 15:40:07 GMT-0500 (Peru Standard Time) Connection accepted.
+RECEIVE DATA: {"tipo":"dx","id":16,"room_id":26}
+Thu Oct 01 2020 15:40:10 GMT-0500 (Peru Standard Time) Peer undefined disconnected.
+Thu Oct 01 2020 15:40:11 GMT-0500 (Peru Standard Time) Connection from origin https://aprendo.space.
+Thu Oct 01 2020 15:40:11 GMT-0500 (Peru Standard Time) Connection accepted.
+RECEIVE DATA: {"tipo":"ax","id":1,"room_id":26,"nick":"diego"}
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26',
+     tipo: 'dx',
+     id: '165f763eadc8651',
+     socketId: '16' },
+  data: { screen: null } }
+Enviar Pantalla a todos
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26',
+     tipo: 'dx',
+     id: '165f763eaf76202',
+     socketId: '16' },
+  data: { screen: { id: '13' } } }
+Enviar Pantalla a todos
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26', tipo: 'ax', id: '15f763eb986134', socketId: '1' },
+  data:
+   { nick: 'diego',
+     mark:
+      { cid: 13,
+        opcion_id: 82,
+        text: 'asdasd',
+        puntaje: '0.00',
+        status: false } } }
+Thu Oct 01 2020 15:40:31 GMT-0500 (Peru Standard Time) Peer undefined disconnected.
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26',
+     tipo: 'dx',
+     id: '165f763ec2ac290',
+     socketId: '16' },
+  data: { action: 'detener' } }
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '26',
+     tipo: 'dx',
+     id: '165f763ec3dbb36',
+     socketId: '16' },
+  data:
+   { info:
+      { fecha_desde: 1601584702,
+        fecha_hasta: 1601584834,
+        streaming: false,
+        video: false } } }
+Thu Oct 01 2020 15:40:36 GMT-0500 (Peru Standard Time) Peer undefined disconnected.
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764cfe4368b', socketId: '1' },
+  data:
+   { info:
+      { fecha_desde: false,
+        fecha_hasta: false,
+        streaming: false,
+        video: false } } }
+Conexión destino no registrada
+Thu Oct 01 2020 16:41:20 GMT-0500 (Peru Standard Time) Connection from origin https://aprendo.space.
+Thu Oct 01 2020 16:41:20 GMT-0500 (Peru Standard Time) Connection accepted.
+RECEIVE DATA: {"tipo":"dx","id":1,"room_id":17}
+Thu Oct 01 2020 16:41:45 GMT-0500 (Peru Standard Time) Connection from origin https://aprendo.space.
+Thu Oct 01 2020 16:41:45 GMT-0500 (Peru Standard Time) Connection accepted.
+RECEIVE DATA: {"tipo":"ax","id":16,"room_id":17,"nick":"Rodson3163"}
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764d34218c2', socketId: '1' },
+  data: { action: 'video', video: false } }
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764d4c3fcf7', socketId: '1' },
+  data: { action: 'iniciar' } }
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764d5b17cb6', socketId: '1' },
+  data: { screen: { id: '2' } } }
+Enviar Pantalla a todos
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17',
+     tipo: 'ax',
+     id: '165f764d61e374a',
+     socketId: '16' },
+  data:
+   { nick: 'Rodson3163',
+     mark:
+      { cid: 2,
+        opcion_id: 5,
+        text: '¿En que año descubrió Colón América?',
+        puntaje: '0.00',
+        status: false } } }
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764d676eb05', socketId: '1' },
+  data: { screen: { id: '1' } } }
+Enviar Pantalla a todos
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17',
+     tipo: 'ax',
+     id: '165f764d6ab254c',
+     socketId: '16' },
+  data:
+   { nick: 'Rodson3163',
+     mark:
+      { cid: 1,
+        opcion_id: 3,
+        text: '¿Esto es una pregunta de Prueba?',
+        puntaje: '0.00',
+        status: false } } }
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764d7597149', socketId: '1' },
+  data: { screen: { id: '3' } } }
+Enviar Pantalla a todos
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17',
+     tipo: 'ax',
+     id: '165f764d7777e97',
+     socketId: '16' },
+  data:
+   { nick: 'Rodson3163',
+     mark:
+      { cid: 3,
+        opcion_id: 9,
+        text: '¿Cuál era la capital del Imperio Inca?',
+        puntaje: '0.00',
+        status: false } } }
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764d92cef7b', socketId: '1' },
+  data:
+   { info:
+      { fecha_desde: 1601588556,
+        fecha_hasta: false,
+        streaming: true,
+        video: false } } }
+Thu Oct 01 2020 16:43:47 GMT-0500 (Peru Standard Time) Peer undefined disconnected.
+Thu Oct 01 2020 16:43:47 GMT-0500 (Peru Standard Time) Connection from origin https://aprendo.space.
+Thu Oct 01 2020 16:43:47 GMT-0500 (Peru Standard Time) Connection accepted.
+RECEIVE DATA: {"tipo":"dx","id":1,"room_id":17}
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764d9491a46', socketId: '1' },
+  data: { action: 'video', video: true } }
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764daca860c', socketId: '1' },
+  data: { action: 'video', video: false } }
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764db7b1f7b', socketId: '1' },
+  data: { action: 'detener' } }
+Thu Oct 01 2020 16:44:24 GMT-0500 (Peru Standard Time) Peer undefined disconnected.
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '17', tipo: 'dx', id: '15f764db8e3412', socketId: '1' },
+  data:
+   { info:
+      { fecha_desde: 1601588556,
+        fecha_hasta: 1601588663,
+        streaming: false,
+        video: false } } }
+Thu Oct 01 2020 16:44:25 GMT-0500 (Peru Standard Time) Peer undefined disconnected.
+::ffff:185.216.140.6
+::ffff:162.243.128.96
+::ffff:74.120.14.50
+::ffff:74.120.14.50
+::ffff:162.142.125.34
+::ffff:162.142.125.34
+::ffff:162.142.125.52
+::ffff:162.142.125.52
+::ffff:198.143.155.138
+::ffff:74.120.14.50
+::ffff:74.120.14.50
+::ffff:192.35.168.251
+::ffff:192.35.168.251
+::ffff:192.241.227.129
+::ffff:167.248.133.33
+::ffff:167.248.133.33
+::ffff:192.241.238.54
+::ffff:192.35.168.251
+::ffff:192.35.168.251
+::ffff:74.120.14.35
+::ffff:74.120.14.35
+::ffff:167.248.133.51
+::ffff:167.248.133.51
+::ffff:162.142.125.50
+::ffff:162.142.125.50
+::ffff:167.248.133.52
+::ffff:167.248.133.52
+::ffff:192.241.234.107
+::ffff:74.120.14.35
+::ffff:74.120.14.35
+::ffff:18.208.130.165
+::ffff:162.142.125.51
+::ffff:162.142.125.51
+::ffff:172.17.0.3
+REQUEST { identidad:
+   { room_id: '1', tipo: 'dx', id: '15f7f88100650d', socketId: '1' },
+  data:
+   { info:
+      { fecha_desde: 1590126516,
+        fecha_hasta: 1590127173,
+        streaming: false,
+        video: false } } }
+Conexión destino no registrada
+::ffff:185.216.140.6
+::ffff:106.75.3.52
+::ffff:106.75.85.103
+::ffff:162.142.125.36
+::ffff:162.142.125.36
+::ffff:162.243.128.195
+::ffff:74.120.14.36
+::ffff:74.120.14.36
+::ffff:167.248.133.35
+::ffff:167.248.133.35
+::ffff:183.136.225.45
+::ffff:192.241.235.203
+::ffff:74.120.14.52
+::ffff:74.120.14.52
+::ffff:167.248.133.52
+::ffff:167.248.133.52
+::ffff:192.241.234.205
+::ffff:162.142.125.51
+::ffff:162.142.125.51
+::ffff:74.120.14.35
+::ffff:74.120.14.35
+::ffff:162.142.125.35
+::ffff:162.142.125.35
+::ffff:128.14.209.242
+::ffff:162.243.128.48
+::ffff:167.248.133.36
+::ffff:167.248.133.36
+::ffff:167.248.133.52
+::ffff:167.248.133.52
+::ffff:185.216.140.6
+::ffff:74.120.14.36
+::ffff:74.120.14.36
+::ffff:192.241.232.124
+::ffff:162.142.125.49
+::ffff:162.142.125.49
+::ffff:192.35.169.48
+::ffff:192.241.238.21
+::ffff:74.120.14.51
+::ffff:74.120.14.51
+::ffff:167.248.133.52
+::ffff:167.248.133.52
+::ffff:162.142.125.34
+::ffff:162.142.125.34
+::ffff:192.241.205.222
+::ffff:74.120.14.36
+::ffff:74.120.14.36
+::ffff:162.142.125.49
+::ffff:162.142.125.49
+::ffff:167.248.133.52
+::ffff:167.248.133.52
+::ffff:89.248.160.139
+::ffff:89.248.160.139
+::ffff:192.241.212.158
+::ffff:167.248.133.51
+::ffff:167.248.133.51
+::ffff:185.216.140.6
+::ffff:74.120.14.36
+::ffff:74.120.14.36
+::ffff:162.142.125.35
+::ffff:162.142.125.35
+::ffff:180.149.125.169
+::ffff:142.93.153.184
+::ffff:142.93.153.184
+::ffff:142.93.153.184
+::ffff:192.241.235.244
+::ffff:162.142.125.35
+::ffff:162.142.125.35
+::ffff:167.248.133.35
+::ffff:167.248.133.35
+::ffff:128.14.134.134
+::ffff:74.120.14.51
+::ffff:74.120.14.51
+::ffff:192.241.235.179
+::ffff:167.248.133.51
+::ffff:167.248.133.51
+::ffff:162.142.125.50
+::ffff:162.142.125.50
+::ffff:162.243.128.166
+::ffff:74.120.14.52
+::ffff:74.120.14.52
+::ffff:74.120.14.35
+::ffff:74.120.14.35
+::ffff:162.142.125.51
+::ffff:162.142.125.51
+::ffff:162.243.128.36
+::ffff:167.248.133.36
+::ffff:167.248.133.36
+::ffff:185.216.140.6
+::ffff:80.82.77.33
+::ffff:34.78.227.165
+::ffff:192.241.234.70
+::ffff:167.248.133.35
+::ffff:167.248.133.35
+::ffff:162.142.125.49
+::ffff:162.142.125.49
+::ffff:74.120.14.36
+::ffff:74.120.14.36
+::ffff:162.243.128.13
+::ffff:167.248.133.35
+::ffff:167.248.133.35
+::ffff:74.120.14.52
+::ffff:74.120.14.52
+::ffff:172.104.182.211
+::ffff:185.142.236.34
+::ffff:192.241.237.143
+::ffff:192.241.234.103
+::ffff:162.142.125.51
+::ffff:162.142.125.51
+::ffff:192.241.239.81
+::ffff:74.120.14.52
+::ffff:74.120.14.52
+::ffff:167.248.133.35
+::ffff:167.248.133.35
+::ffff:192.241.206.15
+::ffff:162.142.125.51
+::ffff:162.142.125.51
+::ffff:180.149.125.163
+::ffff:192.241.235.185
+::ffff:164.52.24.182
+::ffff:185.216.140.6
+::ffff:107.6.183.226
+::ffff:74.120.14.36
+::ffff:74.120.14.36
+::ffff:167.248.133.35
+::ffff:167.248.133.35
+::ffff:192.241.239.219
+::ffff:162.142.125.36
+::ffff:162.142.125.36
+::ffff:74.120.14.36
+::ffff:74.120.14.36
+::ffff:192.241.231.227
+::ffff:162.142.125.34
+::ffff:162.142.125.34
+::ffff:185.142.236.34
+::ffff:183.136.225.45
+::ffff:183.136.225.45
+::ffff:183.136.225.45
+::ffff:192.241.233.89
+::ffff:162.142.125.34
+::ffff:162.142.125.34
+::ffff:192.241.238.75
+::ffff:193.118.53.194
+::ffff:74.120.14.35
+::ffff:74.120.14.35
+::ffff:167.248.133.52
+::ffff:167.248.133.52
+::ffff:54.227.100.163
+::ffff:192.241.218.197
+::ffff:162.142.125.35
+::ffff:162.142.125.35
+::ffff:162.243.128.131
+::ffff:192.35.169.48
+::ffff:185.216.140.6
+::ffff:192.241.237.237
+::ffff:167.248.133.40
+::ffff:167.248.133.40
+::ffff:104.211.72.132
+::ffff:104.211.72.132
+::ffff:192.241.238.90
+::ffff:74.120.14.55
+::ffff:74.120.14.55
+::ffff:108.178.61.58
+::ffff:162.142.125.37
+::ffff:162.142.125.37
+::ffff:192.241.237.155
+::ffff:74.120.14.40
+::ffff:74.120.14.40
+::ffff:192.241.237.77
+::ffff:192.241.235.57
+::ffff:167.248.133.54
+::ffff:167.248.133.54
+::ffff:162.243.128.71
+::ffff:192.35.169.48
+::ffff:162.142.125.54
+::ffff:162.142.125.54
+::ffff:192.241.233.235
+::ffff:162.142.125.55
+::ffff:162.142.125.55
+::ffff:74.120.14.53
+::ffff:74.120.14.53
+::ffff:167.248.133.56
+::ffff:167.248.133.56
+::ffff:192.241.235.158

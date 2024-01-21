@@ -18,7 +18,7 @@ class Session {
   function __construct() {
     if (static::$instance === null) {
       static::$instance = $this;
-      $this->init();
+      #$this->init();
       return $this;
     }
     return static::g();
@@ -85,11 +85,11 @@ class Session {
     {
         $last = isset($_SESSION['LAST_ACTIVE']) ? $_SESSION['LAST_ACTIVE'] : false ;
         
-        if (false !== $last && (time() - $last > self::$SESSION_AGE))
+        /*if (false !== $last && (time() - $last > self::$SESSION_AGE))
         {
             self::destroy();
             throw new ExpiredSessionException();
-        }
+	}*/
         $_SESSION['LAST_ACTIVE'] = time();
     }
     
@@ -135,8 +135,9 @@ class Session {
         }
     }
     
-    public static function init()
+    public static function start()
     {
+        return session_start();
         if (function_exists('session_status'))
         {
             if (session_status() == PHP_SESSION_DISABLED)

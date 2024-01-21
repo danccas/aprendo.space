@@ -5,7 +5,7 @@ Route::import(__DIR__ . '/../conf.php');
 
 Route::init()->debug(true);
 
-Route::g()->libs->session->init();
+Route::g()->libs->session->start();
 
 Route::any('demo', function() {
   debug($_SESSION);

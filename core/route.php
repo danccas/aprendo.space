@@ -570,7 +570,7 @@ final Class Route {
     return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
   }
   static function requestByPopy($cb = null, $ncb = null) {
-    $r = static::byAjax() && !empty($_SERVER['HTTP_X_POPY']) && strtolower($_SERVER['HTTP_X_POPY']) == '9435';
+    $r = static::byAjax();# && !empty($_SERVER['HTTP_X_POPY']) && strtolower($_SERVER['HTTP_X_POPY']) == '9435';
     if($cb === null) {
       return $r;
     } elseif($r) {
@@ -578,6 +578,7 @@ final Class Route {
     } elseif($ncb !== null) {
       $ncb();
     }
+    return $r;
   }
   /* CSS & JS */
   static function addJS($a, $name = null) {

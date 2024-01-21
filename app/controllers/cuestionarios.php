@@ -109,7 +109,8 @@ Route::any('', function() use($db) {
               'puntaje' => $puntaje,
             ), 'cuestionario_id = ' . $n['id'] . ' AND pregunta_id = ' . $p['id']);
             foreach($opciones as $k => $o) {
-              $db->insert_update('opcion', array(
+
+              $db->insert('opcion', array(
                 '*pregunta_id' => $p['id'],
                 '*orden'       => $k + 1,
                 'texto'       => $o['texto'],
@@ -150,7 +151,7 @@ Route::any('', function() use($db) {
           $db->transaction();
           $pregunta_id = $db->insert('pregunta', $data);
            foreach($opciones as $k => $o) {
-            $db->insert_update('opcion', array(
+            $db->insert('opcion', array(
               '*pregunta_id' => $pregunta_id,
               '*orden'       => $k + 1,
               'texto'       => $o['texto'],
@@ -161,6 +162,7 @@ Route::any('', function() use($db) {
             'cuestionario_id' => $n['id'],
             'pregunta_id'     => $pregunta_id,
             'puntaje'         => $puntaje,
+	    'orden'           => 1,
           ));
           $db->commit();
           Route::go2Back();

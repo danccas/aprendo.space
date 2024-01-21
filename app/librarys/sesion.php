@@ -40,9 +40,14 @@ function subir_imagen_pregunta($imagen, &$error = null) {
       return null;
     }
     $file = time() . uniqid() . '.jpg';
-    if(move_uploaded_file($imagen['tmp_name'], DIR_IMAGES_PRIVATE . $file)) {
+    $hasta = Route::g()->attr('dir_image_private') . $file;
+
+    #debug(['desde' => $imagen['tmp_name'], 'hasta' => $hasta]);
+
+    if(move_uploaded_file($imagen['tmp_name'], $hasta)) {
       return $file;
     } else {
+	    debug(error_get_last());
       $error = 'Surgió un problema inesperado al subir la imagen';
       return null;
     }

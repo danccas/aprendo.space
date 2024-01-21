@@ -3,8 +3,8 @@
 Identify::direccionar_no_logueado();
 
 Route::library('formity2');
-Route::library('socket');
-Route::library('sesion');
+Route::libraryOwn('socket');
+Route::libraryOwn('sesion');
 
 $db = Doris::init('aprendo');
 
@@ -22,8 +22,8 @@ Route::any(':codigo', array('codigo' => '[\w\-\_]{8}'), function($route) use($db
       WHERE usuario_id = S.usuario_id AND seguidor_id = " . Identify::g()->id . ") as seguidor_yo
     FROM sesion S
       JOIN usuario U ON U.id = S.usuario_id
-    WHERE S.codigo = :codigo", true, null, array(
-    'codigo'  => $route['codigo'],
+    WHERE S.codigo = :codigo", true, array(
+    'codigo'  => $route->current_route['codigo'],
   ));
   if(empty($sesion)) {
     _404();
@@ -65,8 +65,10 @@ Route::any(':codigo', array('codigo' => '[\w\-\_]{8}'), function($route) use($db
       FROM usuario_seguidor
       WHERE usuario_id = " . $sesion['usuario_id'], true);
     Route::responseJSON(200, array(
-      'count' => $rp['cantidad'],
-      'me'    => empty($existe),
+     'message' => [
+        'count' => $rp['cantidad'],
+        'me'    => empty($existe),
+      ]
     ));
   });
   Route::createLink('getInfo', function() use($db) {
@@ -85,10 +87,13 @@ Route::any(':codigo', array('codigo' => '[\w\-\_]{8}'), function($route) use($db
       Route::responseJSON(404, 'sin-información');
     }
     if(!empty($pregunta['imagen'])) {
-      $pregunta['imagen'] = DIR_IMAGE_PUBLIC . $pregunta['imagen'];
+      $pregunta['imagen'] = Route::g()->attr('dir_image_public') . $pregunta['imagen'];
     }
     $pregunta['opciones'] = $db->get("SELECT * FROM opcion WHERE pregunta_id = " . $pregunta['id'] . " ORDER BY orden ASC");
-    Route::responseJSON(200, $pregunta);
+    Route::responseJSON(200, [
+	    'code'    => 200,
+	    'message' => $pregunta,
+    ]);
   });
   Route::createLink('registerMark', function() use($db, $sesion) {
     $cid       = (int) $_POST['cid'];
@@ -103,7 +108,7 @@ Route::any(':codigo', array('codigo' => '[\w\-\_]{8}'), function($route) use($db
     if(empty($existe)) {
       _404();
     }
-    $db->insert_update('sesion_respuesta', array(
+    $db->insert('sesion_respuesta', array(
       '*usuario_id'      => Identify::g()->id,
       '*sesion_id'       => $sesion['id'],
       '*cid'             => $cid,
@@ -127,9 +132,11 @@ Route::any(':codigo', array('codigo' => '[\w\-\_]{8}'), function($route) use($db
         'status'    => !empty($existe['correcto']),
       ),
     ));
-    Route::responseJSON(200, array(
+    Route::responseJSON(200,[
+	    'message' => 
+	    array(
       'puntaje' => $puntaje,
-    ));
+    )]);
   });
   Route::addMeta('title', $sesion['nombre'] . ' de ' . $sesion['usuario'] . ' | #AprendoSpace');
   Route::theme('room', $sesion);

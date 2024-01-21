@@ -134,11 +134,13 @@ Route::any('info/:codigo', array('codigo' => '[\w\-\_]{8}'), function($ce) use($
       'action' => 'video',
       'video'  => $nv,
     ));
-    Route::responseJSON(201, array(
+    Route::responseJSON(201, [
+	    'code'    => 201,
+	    'message' => array(
       'old'       => $sesion['streaming'],
       'streaming' => $nv,
       'text'      => !$nv ? 'Iniciar Streaming' : 'Detener Streaming',
-    ));
+    )]);
   });
   Route::createLink('insertar', function() use($db, $sesion) {
     $cuestionario_id = $_POST['cuestionario_id'];
@@ -158,9 +160,9 @@ Route::any('info/:codigo', array('codigo' => '[\w\-\_]{8}'), function($ce) use($
         'sesion_id'       => $sesion['id'],
         'cuestionario_id' => $cuestionario_id,
       ));
-      Route::responseJSON(201, 'OK');
+      Route::responseJSON(201, ['message' => 'OK']);
     } else {
-      Route::responseJSON(304, 'YaExiste');
+      Route::responseJSON(304, ['message' => 'YaExiste']);
     }
   });
   Route::createLink('tabs', function() use($db, $sesion) {
@@ -210,13 +212,15 @@ Route::any('info/:codigo', array('codigo' => '[\w\-\_]{8}'), function($ce) use($
       SocketSend($sesion['id'], TYPE_PRESENTER, Identify::g()->id, array( 
         'action'  => 'iniciar',
       ));
-      Route::responseJSON(201, array(
+      Route::responseJSON(201, [
+	      'code' => 201,
+	      'message' => array(
         'action' => 'iniciar',
         'next'   => array(
           'class' => 'button is-darger',
           'text'  => 'Detener',
         )
-      ));
+      )]);
     } elseif($sesion['estado'] == SESION_INICIADO) {
       $db->update('sesion', array(
         'fecha_hasta' => Doris::time(),
@@ -224,20 +228,22 @@ Route::any('info/:codigo', array('codigo' => '[\w\-\_]{8}'), function($ce) use($
       SocketSend($sesion['id'], TYPE_PRESENTER, Identify::g()->id, array(
         'action'  => 'detener',
       ));
-      Route::responseJSON(201, array(
+      Route::responseJSON(201, [
+	      'code' => 201,
+	      'message' => array(
         'action' => 'detener',
         'next'   => array(
           'class' => 'button',
           'text'  => fecha($sesion['fecha_desde']),
         )
-      ));
+      )]);
     } else {
       Route::responseJSON(304);
     }
   });
   Route::createLink('insertScreen', function() use($db, $sesion) {
     if($sesion['estado'] != SESION_INICIADO) {
-      Route::responseJSON(406, 'Debe iniciar la sesión para poder enviar un material');
+      Route::responseJSON(406, ['message' => 'Debe iniciar la sesión para poder enviar un materia']);
     }
     $cid = is_numeric($_POST['cid']) ? $_POST['cid'] : null;
     $current = $db->get("
@@ -253,7 +259,7 @@ Route::any('info/:codigo', array('codigo' => '[\w\-\_]{8}'), function($ce) use($
       SocketSend($sesion['id'], TYPE_PRESENTER, Identify::g()->id, array(
         'screen'    => null,
       ));
-      Route::responseJSON(304, 'no-screen');
+      Route::responseJSON(304, ['message' => 'no-screen']);
     } else {
       $db->insert('sesion_material', array(
         'sesion_id'   => $sesion['id'],
@@ -265,7 +271,7 @@ Route::any('info/:codigo', array('codigo' => '[\w\-\_]{8}'), function($ce) use($
           'id'   => $cid
         ),
       ));
-      Route::responseJSON(201, 'Ok');
+      Route::responseJSON(201, ['message' => 'Ok']);
     }
   });
   Route::createLink('getCuadrilla', function() use($db, $sesion) {

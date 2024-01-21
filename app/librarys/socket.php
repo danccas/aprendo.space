@@ -6,7 +6,7 @@ define('TYPE_DRAWER', 'vx');
 Route::libraryOwn('curly');
 
 function SocketSend($room_id, $type_id, $socket_id, $data) {
-  $URL = "https://127.0.0.1:8081/";
+  $URL = "https://172.17.0.5:8081/";
   $data = array(
     'identidad' => array(
       'room_id'  => $room_id,
